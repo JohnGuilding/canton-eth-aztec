@@ -17,7 +17,7 @@
       "description": "Minimal observer bundle"
     },
     "regulatorInquiry": {
-      "fields": ["x", "z"],
+      "fields": ["x", "y"],
       "description": "Regulator-only bundle requiring lawful basis metadata and disclosure receipt"
     },
     "pricingSupplement": {

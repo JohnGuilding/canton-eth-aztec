@@ -1,1 +1,5 @@
 node_modules
+target
+src/artifacts
+store
+codegenCache.json
