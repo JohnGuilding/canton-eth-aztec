@@ -1,0 +1,18 @@
+{
+  "name": "canton-eth-aztec-prototype-a",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Aztec-only hackathon MVP for a Canton-like multiparty trade protocol with mixed public/private state and selective disclosure.",
+  "type": "module",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "demo": "node --loader ts-node/esm src/demo.ts",
+    "check": "tsc -p tsconfig.json --noEmit",
+    "test": "node --test --loader ts-node/esm test/**/*.test.ts"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.6.3"
+  }
+}

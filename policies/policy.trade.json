@@ -1,0 +1,48 @@
+{
+  "policyId": "P",
+  "policyName": "trade-default-selective-disclosure",
+  "version": "1.0.0",
+  "objectType": "trade",
+  "bundleClasses": {
+    "fullTradeCore": {
+      "fields": ["x", "y", "z"],
+      "description": "Full core confidential trade terms"
+    },
+    "counterpartyCore": {
+      "fields": ["x", "y"],
+      "description": "Counterparty-visible core terms"
+    },
+    "observerCore": {
+      "fields": ["y"],
+      "description": "Minimal observer bundle"
+    },
+    "regulatorInquiry": {
+      "fields": ["x", "z"],
+      "description": "Regulator-only bundle requiring lawful basis metadata and disclosure receipt"
+    },
+    "pricingSupplement": {
+      "fields": ["pricingDetails"],
+      "description": "Optional pricing supplement"
+    },
+    "counterpartySupplement": {
+      "fields": ["counterpartyMetadata"],
+      "description": "Supplemental counterparty metadata"
+    },
+    "internalRiskSupplement": {
+      "fields": ["internalRiskNotes"],
+      "description": "Internal risk notes restricted to originator-side risk workflows"
+    }
+  },
+  "roleBindings": {
+    "A": ["fullTradeCore", "pricingSupplement", "counterpartySupplement", "internalRiskSupplement"],
+    "B": ["counterpartyCore", "pricingSupplement", "counterpartySupplement"],
+    "C": ["observerCore"],
+    "R": ["regulatorInquiry"]
+  },
+  "constraints": {
+    "regulatorDisclosureRequiresLawfulBasis": true,
+    "recordPublicReceipt": true,
+    "revocationUsesEpoch": true,
+    "proofOnlyAssertionsAllowed": true
+  }
+}

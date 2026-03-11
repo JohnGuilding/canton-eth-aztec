@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "trade.schema.json",
+  "title": "PrototypeATrade",
+  "type": "object",
+  "required": [
+    "publicHeader",
+    "privatePayload"
+  ],
+  "properties": {
+    "publicHeader": {
+      "type": "object",
+      "required": [
+        "objectId",
+        "schemaId",
+        "version",
+        "parentVersionHash",
+        "lifecycleState",
+        "stakeholderRoot",
+        "policyHash",
+        "fieldRoot",
+        "complianceRoot",
+        "revocationEpoch",
+        "settlementRef",
+        "settlementStatus"
+      ],
+      "properties": {
+        "objectId": { "type": "string" },
+        "schemaId": { "type": "string" },
+        "version": { "type": "integer", "minimum": 1 },
+        "parentVersionHash": { "type": "string" },
+        "lifecycleState": {
+          "type": "string",
+          "enum": ["Draft", "Proposed", "Matched", "Approved", "Settled", "Closed", "Cancelled"]
+        },
+        "stakeholderRoot": { "type": "string" },
+        "policyHash": { "type": "string" },
+        "fieldRoot": { "type": "string" },
+        "complianceRoot": { "type": "string" },
+        "revocationEpoch": { "type": "integer", "minimum": 0 },
+        "settlementRef": { "type": ["string", "null"] },
+        "settlementStatus": { "type": "string", "enum": ["Unbound", "Pending", "InFlight", "Final"] },
+        "productType": { "type": ["string", "null"] },
+        "notionalBucket": { "type": ["string", "null"] }
+      }
+    },
+    "privatePayload": {
+      "type": "object",
+      "required": [
+        "x",
+        "y",
+        "z",
+        "pricingDetails",
+        "counterpartyMetadata",
+        "internalRiskNotes"
+      ],
+      "properties": {
+        "x": { "type": "string" },
+        "y": { "type": "string" },
+        "z": { "type": "string" },
+        "pricingDetails": { "type": "object" },
+        "counterpartyMetadata": { "type": "object" },
+        "internalRiskNotes": { "type": "object" }
+      }
+    }
+  }
+}
